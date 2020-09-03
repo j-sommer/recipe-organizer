@@ -25,6 +25,8 @@ jobs:
         shell: bash
       - name: Install Dependencies
         run: poetry install
+      - name: Remove Dev Dependencies
+        run: poetry remove pytest pytest-mock
       - name: Install Pyinstaller
         run: poetry add pyinstaller
       - name: Build Executable
