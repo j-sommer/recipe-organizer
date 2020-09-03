@@ -1,4 +1,4 @@
-name: Build Executable
+name: Build Executable Artifact
 
 on:
   push:
@@ -29,11 +29,8 @@ jobs:
         run: poetry add pyinstaller
       - name: Build Executable
         run: poetry run pyinstaller --onefile app.py --name ingredient-extractor
-      - name: Upload binaries to release
-        uses: svenstaro/upload-release-action@v2
+      - name: Build Artifact
+        uses: actions/upload-artifact@v2
         with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: dist/ingredient-extractor
-          tag: ${{ github.ref }}
-          overwrite: true
-          body: "executable .exe file"
+           name: ingredient-extractor
+           path: dist/ingredient-extractor.exe
