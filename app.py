@@ -1,5 +1,8 @@
+from gui.app_window import AppWindow
+
+
 def main():
-    print("app initialized")
+    AppWindow()
 
 
 if __name__ == "__main__":
