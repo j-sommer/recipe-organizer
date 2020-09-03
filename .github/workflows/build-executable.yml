@@ -28,7 +28,7 @@ jobs:
       - name: Install Pyinstaller
         run: poetry add pyinstaller
       - name: Build Executable
-        run: pyinstaller --onefile app.py --name ingredient-extractor
+        run: poetry run pyinstaller --onefile app.py --name ingredient-extractor
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:
