@@ -1,4 +1,4 @@
-name: Run Tests
+name: Build Executable
 
 on:
   push:
@@ -25,5 +25,13 @@ jobs:
       shell: bash
     - name: Install Dependencies
       run: poetry install
-    - name: Test with pytest
-      run: poetry run pytest
+    - name: Build Executable
+      run: pyinstaller --onefile app.py --name ingredient-extractor
+    - name: Upload binaries to release
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: dist/ingredient-extractor.exe
+        tag: ${{ github.ref }}
+        overwrite: true
+        body: "executable .exe file"
