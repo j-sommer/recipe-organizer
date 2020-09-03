@@ -28,7 +28,7 @@ jobs:
       - name: Install Pyinstaller
         run: poetry add pyinstaller
       - name: Build Executable
-        run: poetry run pyinstaller --onefile app.py --name ingredient-extractor
+        run: poetry run pyinstaller app.py --name ingredient-extractor
       - name: Build Artifact
         uses: actions/upload-artifact@v2
         with:
