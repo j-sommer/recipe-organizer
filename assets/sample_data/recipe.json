@@ -1,0 +1,52 @@
+{
+  "title": "Schwarzbrot",
+  "labels": [],
+  "ingredients": [
+    {
+      "name": "Sauerteig",
+      "quantity-type": "g",
+      "quantity": 200
+    },
+    {
+      "name": "Roggenschrot",
+      "quantity-type": "g",
+      "quantity": 100
+    },
+    {
+      "name": "Roggenmehl 1150",
+      "quantity-type": "g",
+      "quantity": 250
+    },
+    {
+      "name": "Roggenflocken",
+      "quantity-type": "g",
+      "quantity": 100
+    },
+    {
+      "name": "Sonnenblumenkerne",
+      "quantity-type": "g",
+      "quantity": 50
+    },
+    {
+      "name": "Leinsamen",
+      "quantity-type": "g",
+      "quantity": 50
+    },
+    {
+      "name": "Salz",
+      "quantity-type": "g",
+      "quantity": 15
+    },
+    {
+      "name": "Rübensirup",
+      "quantity-type": "EL",
+      "quantity": 1
+    },
+    {
+      "name": "Lauwarmes Wasser",
+      "quantity-type": "ml",
+      "quantity": 400
+    }
+  ],
+  "preparation": "Alle Zutaten in eine Schüssel geben und mithilfe eines Mixers oder eine Küchenmaschine gute 5 Minuten rühren bzw. kneten lassen (der Teig wird relativ weich, was aber richtig ist).\nDie Schüssel abdecken und den Teig gehen lassen (je nach Raumtemperatur kann dies gut 2-6 Stunden dauern, auch ist die Triebstärke des Sauerteiges wichtig. Daher immer mal schauen). Hat der Teig sein Volumen verdoppelt, ist er bereit zur Weiterverarbeitung.\nMag man das Brot intensiver im Geschmack, kann man den Teig auch über Nacht im Kühlschrank gehen lassen, was ich empfehle."
+}
