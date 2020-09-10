@@ -31,4 +31,3 @@ def test_recipe_deserialization():
     assert actual.title == "title"
     assert actual.labels == ["labelA", "labelB"]
     assert actual.preparation == "preparation"
-    assert actual
