@@ -2,7 +2,8 @@ from gui.app_window import AppWindow
 
 
 def main():
-    AppWindow()
+    app_window = AppWindow()
+    app_window.render()
 
 
 if __name__ == "__main__":

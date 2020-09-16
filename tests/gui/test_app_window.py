@@ -1,25 +1,36 @@
-import tkinter
+from tkinter import Tk
+from unittest.mock import patch, MagicMock
 
 from gui.app_window import AppWindow
+from gui.recipe_form.recipe_form import RecipeForm
 from gui.recipe_selection.recipe_selection import RecipeSelection
 
+module_path = "gui.app_window"
 
-def test_app_window_initialization(mocker):
+
+def test_app_window_initialization():
     # Given
-    mocker.patch.object(tkinter.Tk, "__init__", return_value=None)
-    mock_title = mocker.patch.object(tkinter.Tk, "title", return_value=None)
-    mock_state = mocker.patch.object(tkinter.Tk, "state", return_value=None)
-    mock_min_size = mocker.patch.object(tkinter.Tk, "minsize", return_value=None)
-    mock_main_loop = mocker.patch.object(tkinter.Tk, "mainloop", return_value=None)
+    with patch(f"{module_path}.Tk", autospec=True) as mock_tkinter, \
+            patch(f"{module_path}.RecipeForm", autospec=True) as mock_recipe_form, \
+            patch(f"{module_path}.RecipeSelection", autospec=True) as mock_recipe_selection:
+        tk_instance = MagicMock(Tk)
+        mock_tkinter.return_value = tk_instance
 
-    mock_recipe_selection = mocker.patch.object(RecipeSelection, "__init__", return_value=None)
+        recipe_form_instance = MagicMock(RecipeForm)
+        mock_recipe_form.return_value = recipe_form_instance
 
-    # When
-    AppWindow()
+        recipe_selection_instance = MagicMock(RecipeSelection)
+        mock_recipe_selection.return_value = recipe_selection_instance
 
-    # Then
-    mock_title.assert_called_once_with("Ingredient Extractor")
-    mock_state.assert_called_once_with("zoomed")
-    mock_min_size.assert_called_once_with(300, 200)
-    mock_recipe_selection.assert_called_once()
-    mock_main_loop.assert_called_once()
+        # When
+        AppWindow()
+
+        # Then
+        tk_instance.title.assert_called_once_with("Ingredient Extractor")
+        tk_instance.state.assert_called_once_with("zoomed")
+        tk_instance.minsize.assert_called_once_with(300, 200)
+
+        mock_recipe_form.assert_called_once()
+        mock_recipe_selection.assert_called_once()
+
+        recipe_selection_instance.set_recipe_callback.assert_called_once_with(recipe_form_instance.set_values)
