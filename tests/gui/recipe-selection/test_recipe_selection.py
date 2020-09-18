@@ -11,7 +11,8 @@ module_path = "gui.recipe_selection.recipe_selection"
 def test_recipe_selection_initialization():
     # Given
     with patch(f"{module_path}.Label", autospec=True) as mock_label, \
-            patch(f"{module_path}.Button", autospec=True) as mock_button:
+            patch(f"{module_path}.Button", autospec=True) as mock_button, \
+            patch(f"{module_path}.Frame", autospec=True):
         label_instance = mock_label.return_value
         button_instance = mock_button.return_value
 
@@ -44,7 +45,8 @@ def test_recipe_selection_file_deserialization():
     with patch(f"{module_path}.Label", autospec=True), \
          patch(f"{module_path}.Button", autospec=True), \
          patch(f"{module_path}.filedialog", autospec=True) as mock_filedialog, \
-            patch(f"{module_path}.Recipe", autospec=True) as mock_recipe:
+            patch(f"{module_path}.Recipe", autospec=True) as mock_recipe, \
+            patch(f"{module_path}.Frame", autospec=True):
         mock_path = "/path/to/json"
 
         recipe = Recipe("title", [], [], "preparation")
