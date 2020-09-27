@@ -6,55 +6,55 @@
     {
       "py/object": "recipe.ingredient.ingredient.Ingredient",
       "name": "Sauerteig",
-      "quantity-type": "g",
+      "quantity_type": "g",
       "quantity": 200
     },
     {
       "py/object": "recipe.ingredient.ingredient.Ingredient",
       "name": "Roggenschrot",
-      "quantity-type": "g",
+      "quantity_type": "g",
       "quantity": 100
     },
     {
       "py/object": "recipe.ingredient.ingredient.Ingredient",
       "name": "Roggenmehl 1150",
-      "quantity-type": "g",
+      "quantity_type": "g",
       "quantity": 250
     },
     {
       "py/object": "recipe.ingredient.ingredient.Ingredient",
       "name": "Roggenflocken",
-      "quantity-type": "g",
+      "quantity_type": "g",
       "quantity": 100
     },
     {
       "py/object": "recipe.ingredient.ingredient.Ingredient",
       "name": "Sonnenblumenkerne",
-      "quantity-type": "g",
+      "quantity_type": "g",
       "quantity": 50
     },
     {
       "py/object": "recipe.ingredient.ingredient.Ingredient",
       "name": "Leinsamen",
-      "quantity-type": "g",
+      "quantity_type": "g",
       "quantity": 50
     },
     {
       "py/object": "recipe.ingredient.ingredient.Ingredient",
       "name": "Salz",
-      "quantity-type": "g",
+      "quantity_type": "g",
       "quantity": 15
     },
     {
       "py/object": "recipe.ingredient.ingredient.Ingredient",
       "name": "Rübensirup",
-      "quantity-type": "EL",
+      "quantity_type": "EL",
       "quantity": 1
     },
     {
       "py/object": "recipe.ingredient.ingredient.Ingredient",
       "name": "Lauwarmes Wasser",
-      "quantity-type": "ml",
+      "quantity_type": "ml",
       "quantity": 400
     }
   ],

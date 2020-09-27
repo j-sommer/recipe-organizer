@@ -25,5 +25,8 @@ jobs:
       shell: bash
     - name: Install Dependencies
       run: poetry install
+    - name: Install In-Memory Display For Testing
+      shell: bash
+      run: sudo apt-get install -y xvfb
     - name: Test with pytest
-      run: poetry run pytest
+      run: xvfb-run poetry run pytest

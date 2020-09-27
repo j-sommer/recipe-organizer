@@ -1,12 +1,17 @@
+from unittest.mock import patch, MagicMock
+
 from app import main
 from gui.app_window import AppWindow
 
 
-def test_app_initialization(mocker):
+@patch("app.AppWindow", autospec=True)
+def test_app_initialization(mock_app_window):
     # Given
-    mock_app_window = mocker.patch.object(AppWindow, "__init__", return_value=None)
+    app_window_instance = MagicMock(AppWindow)
+    mock_app_window.return_value = app_window_instance
+
     # When
     main()
 
     # Then
-    mock_app_window.assert_called_once()
+    app_window_instance.render.assert_called_once()
