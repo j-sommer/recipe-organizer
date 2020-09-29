@@ -14,8 +14,6 @@ class AppWindow:
         self._recipe_selection = RecipeSelection()
         self._recipe_form = RecipeForm()
 
-        self._recipe_selection.set_recipe_callback(self._recipe_form.set_values)
-
         self._recipe_selection.grid(row=0)
         self._recipe_form.grid(row=1)
 

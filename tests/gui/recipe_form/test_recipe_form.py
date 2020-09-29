@@ -9,30 +9,25 @@ module_path = "gui.recipe_form.recipe_form"
 
 def test_recipe_form_initialization():
     # Given
-    with patch(f"{module_path}.Label") as mock_label, \
-            patch(f"{module_path}.Entry") as mock_entry, \
-            patch(f"{module_path}.Frame") as mock_frame:
-        label_instance = mock_label.return_value
-        entry_instance = mock_entry.return_value
-        frame_instance = mock_frame.return_value
-
+    with patch(f"{module_path}.Label"), \
+         patch(f"{module_path}.Entry"), \
+         patch(f"{module_path}.Button"), \
+         patch(f"{module_path}.Frame"):
         # When
         recipe_form = RecipeForm()
 
         # Then
         assert recipe_form
-        label_instance.grid.assert_called_once()
-        entry_instance.grid.assert_called_once()
-        frame_instance.grid.assert_called_once()
 
 
 def test_recipe_handling():
     # Given
-    with patch(f"{module_path}.Entry") as mock_entry:
+    with patch(f"{module_path}.IngredientForm") as mock_ingredient_form, \
+            patch(f"{module_path}.Entry") as mock_entry:
         ingredients = [Ingredient("ingredientA", "g", 50), Ingredient("ingredientB", "g", 50)]
         recipe = Recipe("title", [], ingredients, "preparation")
 
-        expected_ingredient_entries_count = len(ingredients) * 3
+        expected_ingredient_form_count = len(ingredients)
         expected_preparation_entries_count = 1
 
         patch.object(RecipeForm, "__init__", return_value=None)
@@ -42,4 +37,5 @@ def test_recipe_handling():
         recipe_form.set_values(recipe)
 
         # Then
-        assert mock_entry.call_count == expected_ingredient_entries_count + expected_preparation_entries_count
+        assert mock_entry.call_count == expected_preparation_entries_count
+        assert mock_ingredient_form.call_count == expected_ingredient_form_count
