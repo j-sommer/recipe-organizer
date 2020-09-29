@@ -11,6 +11,7 @@ def test_recipe_form_initialization():
     # Given
     with patch(f"{module_path}.Label"), \
          patch(f"{module_path}.Entry"), \
+         patch(f"{module_path}.Button"), \
          patch(f"{module_path}.Frame"):
         # When
         recipe_form = RecipeForm()

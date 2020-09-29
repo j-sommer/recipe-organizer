@@ -1,5 +1,7 @@
 from tkinter import Frame, Entry
 
+from recipe.ingredient.ingredient import Ingredient
+
 
 class IngredientForm(Frame):
     def __init__(self, parent, ingredient):
@@ -27,3 +29,10 @@ class IngredientForm(Frame):
         self._entry_ingredient_name.insert(0, ingredient.name)
         self._entry_quantity.insert(0, ingredient.quantity)
         self._entry_quantity_type.insert(0, ingredient.quantity_type)
+
+    def get_ingredient(self):
+        return Ingredient(
+            self._entry_ingredient_name.get(),
+            self._entry_quantity_type.get(),
+            self._entry_quantity.get()
+        )

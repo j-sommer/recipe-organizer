@@ -32,5 +32,3 @@ def test_app_window_initialization():
 
         mock_recipe_form.assert_called_once()
         mock_recipe_selection.assert_called_once()
-
-        recipe_selection_instance.set_recipe_callback.assert_called_once_with(recipe_form_instance.set_values)
