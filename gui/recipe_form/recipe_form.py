@@ -16,11 +16,12 @@ class RecipeForm(Frame, RecipeEventObserver):
     _label_preparation: Label = None
     _text_preparation: Text = None
     _button_save: Button = None
+    _button_add_ingredient: Button = None
+
+    _ingredient_forms: [IngredientForm] = []
 
     def __init__(self):
         super().__init__()
-        
-        self._ingredient_forms = []
 
         RecipeEventPublisher.add(self)
 
@@ -36,6 +37,7 @@ class RecipeForm(Frame, RecipeEventObserver):
         self._label_preparation = Label(self, text="Zubereitung")
         self._text_preparation = Text(self)
         self._button_save = Button(self, text="speichern", command=self.save_recipe)
+        self._button_add_ingredient = Button(self, text="hinzufügen", command=self.add_ingredient)
 
     def configure_layout(self) -> None:
         pass
@@ -45,9 +47,10 @@ class RecipeForm(Frame, RecipeEventObserver):
         self._entry_title.grid(row=0, column=1)
         self._label_ingredients.grid(row=1, column=0)
         self._frame_ingredients.grid(row=2)
-        self._label_preparation.grid(row=3, column=0)
-        self._text_preparation.grid(row=4)
-        self._button_save.grid(row=5)
+        self._button_add_ingredient.grid(row=3, column=1)
+        self._label_preparation.grid(row=4, column=0)
+        self._text_preparation.grid(row=5)
+        self._button_save.grid(row=6)
 
     def set_values(self, recipe: Recipe) -> None:
         if recipe:
@@ -66,6 +69,12 @@ class RecipeForm(Frame, RecipeEventObserver):
         ingredient_form.grid(row=position)
 
         self._ingredient_forms.append(ingredient_form)
+
+    def add_ingredient(self) -> None:
+        new_ingredient_form = IngredientForm(self._frame_ingredients, Ingredient("", "", 0))
+        new_ingredient_form.grid(row=len(self._ingredient_forms))
+
+        self._ingredient_forms.append(new_ingredient_form)
 
     def save_recipe(self) -> None:
         recipe = Recipe(
