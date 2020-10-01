@@ -1,1 +1,1 @@
-# Ingredient Extractor
+# Recipe Manager
