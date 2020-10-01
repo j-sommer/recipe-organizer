@@ -5,6 +5,7 @@ from typing import Any
 class EventType(Enum):
     READ = 1
     SAVE = 2
+    OPEN = 3
 
 
 class Event:
