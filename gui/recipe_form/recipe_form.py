@@ -1,17 +1,17 @@
 from tkinter import Label, Entry, END, Frame, Text, Button
 from typing import Any
 
+from events.event import Event, EventType
+from events.event_observer import EventObserver
+from events.event_publisher import EventPublisher
 from gui.interfaces.list_item_holder import ListItemHolder
 from gui.interfaces.widget_container import WidgetContainer
 from gui.recipe_form.ingredient_form.ingredient_form import IngredientForm
-from recipe.events.recipe_event import RecipeEvent, RecipeEventType
-from recipe.events.recipe_event_observer import RecipeEventObserver
-from recipe.events.recipe_event_publisher import RecipeEventPublisher
 from recipe.ingredient.ingredient import Ingredient
 from recipe.recipe import Recipe
 
 
-class RecipeForm(Frame, WidgetContainer, RecipeEventObserver, ListItemHolder):
+class RecipeForm(Frame, WidgetContainer, EventObserver, ListItemHolder):
     _label_title: Label
     _entry_title: Entry
     _frame_ingredients: Frame
@@ -26,10 +26,10 @@ class RecipeForm(Frame, WidgetContainer, RecipeEventObserver, ListItemHolder):
     def __init__(self):
         super().__init__()
 
-        RecipeEventPublisher.add(self)
+        EventPublisher.add(self)
 
-    def notify(self, event: RecipeEvent) -> None:
-        if event.event_type == RecipeEventType.READ:
+    def notify(self, event: Event) -> None:
+        if event.event_type == EventType.READ:
             self.set_values(event.payload)
 
     def remove_item(self, to_remove: Any) -> None:
@@ -87,4 +87,4 @@ class RecipeForm(Frame, WidgetContainer, RecipeEventObserver, ListItemHolder):
             [],
             [form.get_ingredient() for form in self._ingredient_forms],
             self._text_preparation.get("1.0", END))
-        RecipeEventPublisher.broadcast(RecipeEvent(RecipeEventType.SAVE, payload=recipe))
+        EventPublisher.broadcast(Event(EventType.SAVE, payload=recipe))

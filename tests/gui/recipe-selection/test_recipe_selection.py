@@ -3,8 +3,8 @@ from unittest.mock import patch, mock_open
 
 from pytest import fixture
 
+from events.event import Event, EventType
 from gui.recipe_selection.recipe_selection import RecipeSelection
-from recipe.events.recipe_event import RecipeEvent, RecipeEventType
 from recipe.recipe import Recipe
 
 module_path = "gui.recipe_selection.recipe_selection"
@@ -14,7 +14,7 @@ module_path = "gui.recipe_selection.recipe_selection"
 def mocks():
     with patch(f"{module_path}.Label", autospec=True) as mock_label, \
             patch(f"{module_path}.Button", autospec=True) as mock_button, \
-            patch(f"{module_path}.RecipeEventPublisher", autospec=True) as mock_event_publisher, \
+            patch(f"{module_path}.EventPublisher", autospec=True) as mock_event_publisher, \
             patch(f"{module_path}.filedialog", autospec=True) as mock_filedialog, \
             patch(f"{module_path}.Recipe", autospec=True) as mock_recipe, \
             patch(f"{module_path}.Frame", autospec=True) as mock_frame:
@@ -43,7 +43,7 @@ def test_save_event_handling(mocks):
     recipe_selection._selected_recipe_file = "path/to/file"
 
     recipe = Recipe("title", [], [], "preparation")
-    recipe_event = RecipeEvent(event_type=RecipeEventType.SAVE, payload=recipe)
+    recipe_event = Event(event_type=EventType.SAVE, payload=recipe)
 
     with patch("builtins.open", mock_open(read_data="content")) as mock_file_open:
         file_instance = mock_file_open()

@@ -1,13 +1,13 @@
 from tkinter import Label, filedialog, Button, Frame
 
+from events.event import Event, EventType
+from events.event_observer import EventObserver
+from events.event_publisher import EventPublisher
 from gui.interfaces.widget_container import WidgetContainer
-from recipe.events.recipe_event import RecipeEvent, RecipeEventType
-from recipe.events.recipe_event_observer import RecipeEventObserver
-from recipe.events.recipe_event_publisher import RecipeEventPublisher
 from recipe.recipe import Recipe
 
 
-class RecipeSelection(Frame, WidgetContainer, RecipeEventObserver):
+class RecipeSelection(Frame, WidgetContainer, EventObserver):
     FILE_TYPES = [
         ('json files', '*.json')
     ]
@@ -24,10 +24,10 @@ class RecipeSelection(Frame, WidgetContainer, RecipeEventObserver):
         self.configure_layout()
         self.define_layout()
 
-        RecipeEventPublisher.add(self)
+        EventPublisher.add(self)
 
-    def notify(self, event: RecipeEvent) -> None:
-        if event.event_type == RecipeEventType.SAVE:
+    def notify(self, event: Event) -> None:
+        if event.event_type == EventType.SAVE:
             self.write_recipe_to_file(event.payload, self._selected_recipe_file)
 
     def define_widgets(self):
@@ -55,7 +55,7 @@ class RecipeSelection(Frame, WidgetContainer, RecipeEventObserver):
             json_data = file.read()
             recipe = Recipe.from_json(json_data)
 
-            RecipeEventPublisher.broadcast(RecipeEvent(RecipeEventType.READ, payload=recipe))
+            EventPublisher.broadcast(Event(EventType.READ, payload=recipe))
 
     @staticmethod
     def write_recipe_to_file(recipe: Recipe, file_path: str) -> None:

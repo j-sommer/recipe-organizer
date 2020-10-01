@@ -1,11 +1,11 @@
 from typing import List
 
-from recipe.events.recipe_event_observer import RecipeEventObserver
+from events.event_observer import EventObserver
 
-_observers: List[RecipeEventObserver] = []
+_observers: List[EventObserver] = []
 
 
-class RecipeEventPublisher:
+class EventPublisher:
 
     @staticmethod
     def add(observer):
