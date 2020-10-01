@@ -1,7 +1,8 @@
 from tkinter import Label, Entry, END, Frame, Text, Button
 from typing import Any
 
-from gui.list_item_holder import ListItemHolder
+from gui.interfaces.list_item_holder import ListItemHolder
+from gui.interfaces.widget_container import WidgetContainer
 from gui.recipe_form.ingredient_form.ingredient_form import IngredientForm
 from recipe.events.recipe_event import RecipeEvent, RecipeEventType
 from recipe.events.recipe_event_observer import RecipeEventObserver
@@ -10,7 +11,7 @@ from recipe.ingredient.ingredient import Ingredient
 from recipe.recipe import Recipe
 
 
-class RecipeForm(Frame, RecipeEventObserver, ListItemHolder):
+class RecipeForm(Frame, WidgetContainer, RecipeEventObserver, ListItemHolder):
     _label_title: Label
     _entry_title: Entry
     _frame_ingredients: Frame

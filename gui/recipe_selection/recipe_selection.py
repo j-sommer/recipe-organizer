@@ -1,12 +1,13 @@
 from tkinter import Label, filedialog, Button, Frame
 
+from gui.interfaces.widget_container import WidgetContainer
 from recipe.events.recipe_event import RecipeEvent, RecipeEventType
 from recipe.events.recipe_event_observer import RecipeEventObserver
 from recipe.events.recipe_event_publisher import RecipeEventPublisher
 from recipe.recipe import Recipe
 
 
-class RecipeSelection(Frame, RecipeEventObserver):
+class RecipeSelection(Frame, WidgetContainer, RecipeEventObserver):
     FILE_TYPES = [
         ('json files', '*.json')
     ]
