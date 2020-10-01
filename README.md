@@ -1,1 +1,1 @@
-# Recipe Manager
+# Recipe Organizer
