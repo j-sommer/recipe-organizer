@@ -1,6 +1,6 @@
 from unittest.mock import patch
 
-from gui.list_item_holder import ListItemHolder
+from gui.interfaces.list_item_holder import ListItemHolder
 from gui.recipe_form.ingredient_form.ingredient_form import IngredientForm
 from recipe.ingredient.ingredient import Ingredient
 

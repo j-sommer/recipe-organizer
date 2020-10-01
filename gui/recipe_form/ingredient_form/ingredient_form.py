@@ -1,10 +1,11 @@
 from tkinter import Frame, Entry, Button
 
-from gui.list_item_holder import ListItemHolder
+from gui.interfaces.list_item_holder import ListItemHolder
+from gui.interfaces.widget_container import WidgetContainer
 from recipe.ingredient.ingredient import Ingredient
 
 
-class IngredientForm(Frame):
+class IngredientForm(Frame, WidgetContainer):
     _list_holder: ListItemHolder
 
     _entry_ingredient_name: Entry

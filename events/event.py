@@ -2,12 +2,12 @@ from enum import Enum
 from typing import Any
 
 
-class RecipeEventType(Enum):
+class EventType(Enum):
     READ = 1
     SAVE = 2
 
 
-class RecipeEvent:
-    def __init__(self, event_type: RecipeEventType, payload: Any):
+class Event:
+    def __init__(self, event_type: EventType, payload: Any):
         self.event_type = event_type
         self.payload = payload
