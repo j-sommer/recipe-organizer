@@ -1,4 +1,5 @@
-from unittest.mock import patch
+from tkinter import Frame
+from unittest.mock import patch, MagicMock
 
 from pytest import fixture
 
@@ -50,6 +51,7 @@ def test_recipe_handling(mocks):
 def test_add_ingredient(mocks):
     # Given
     recipe_form = RecipeForm()
+    recipe_form._frame_ingredients = MagicMock(Frame)
     recipe_form._ingredient_forms = []
 
     # When
