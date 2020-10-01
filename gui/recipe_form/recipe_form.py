@@ -1,5 +1,7 @@
 from tkinter import Label, Entry, END, Frame, Text, Button
+from typing import Any
 
+from gui.list_item_holder import ListItemHolder
 from gui.recipe_form.ingredient_form.ingredient_form import IngredientForm
 from recipe.events.recipe_event import RecipeEvent, RecipeEventType
 from recipe.events.recipe_event_observer import RecipeEventObserver
@@ -8,15 +10,15 @@ from recipe.ingredient.ingredient import Ingredient
 from recipe.recipe import Recipe
 
 
-class RecipeForm(Frame, RecipeEventObserver):
-    _label_title: Label = None
-    _entry_title: Entry = None
-    _frame_ingredients: Frame = None
-    _label_ingredients: Label = None
-    _label_preparation: Label = None
-    _text_preparation: Text = None
-    _button_save: Button = None
-    _button_add_ingredient: Button = None
+class RecipeForm(Frame, RecipeEventObserver, ListItemHolder):
+    _label_title: Label
+    _entry_title: Entry
+    _frame_ingredients: Frame
+    _label_ingredients: Label
+    _label_preparation: Label
+    _text_preparation: Text
+    _button_save: Button
+    _button_add_ingredient: Button
 
     _ingredient_forms: [IngredientForm] = []
 
@@ -29,6 +31,11 @@ class RecipeForm(Frame, RecipeEventObserver):
         if event.event_type == RecipeEventType.READ:
             self.set_values(event.payload)
 
+    def remove_item(self, to_remove: Any) -> None:
+        requested_index = self._ingredient_forms.index(to_remove)
+        self._ingredient_forms[requested_index].destroy()
+        self._ingredient_forms.remove(to_remove)
+
     def define_widgets(self) -> None:
         self._label_title = Label(self, text="Titel")
         self._entry_title = Entry(self)
@@ -38,9 +45,6 @@ class RecipeForm(Frame, RecipeEventObserver):
         self._text_preparation = Text(self)
         self._button_save = Button(self, text="speichern", command=self.save_recipe)
         self._button_add_ingredient = Button(self, text="hinzufügen", command=self.add_ingredient)
-
-    def configure_layout(self) -> None:
-        pass
 
     def define_layout(self) -> None:
         self._label_title.grid(row=0, column=0)
@@ -65,13 +69,13 @@ class RecipeForm(Frame, RecipeEventObserver):
             self._text_preparation.insert(END, recipe.preparation)
 
     def define_ingredient_form(self, position: int, ingredient: Ingredient) -> None:
-        ingredient_form = IngredientForm(self._frame_ingredients, ingredient)
+        ingredient_form = IngredientForm(self._frame_ingredients, ingredient, self)
         ingredient_form.grid(row=position)
 
         self._ingredient_forms.append(ingredient_form)
 
     def add_ingredient(self) -> None:
-        new_ingredient_form = IngredientForm(self._frame_ingredients, Ingredient("", "", 0))
+        new_ingredient_form = IngredientForm(self._frame_ingredients, Ingredient("", "", 0), self)
         new_ingredient_form.grid(row=len(self._ingredient_forms))
 
         self._ingredient_forms.append(new_ingredient_form)
