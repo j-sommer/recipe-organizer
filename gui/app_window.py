@@ -1,5 +1,8 @@
 from tkinter import Tk
 
+from commands.command_invoker import CommandInvoker
+from commands.command_open import CommandOpen
+from commands.command_save import CommandSave
 from gui.event_display.event_display import EventDisplay
 from gui.interfaces.widget_container import WidgetContainer
 from gui.menu_bar.menu_bar import MenuBar
@@ -24,9 +27,7 @@ class AppWindow(WidgetContainer):
 
         self.define_widgets()
         self.define_layout()
-
-        self._menu_bar = MenuBar()
-        self._window.config(menu=self._menu_bar)
+        self.define_command_handling()
 
     def define_widgets(self) -> None:
         self._recipe_form = RecipeForm()
@@ -35,6 +36,17 @@ class AppWindow(WidgetContainer):
     def define_layout(self) -> None:
         self._recipe_form.grid(row=1)
         self._event_display.grid(row=2)
+
+    def define_command_handling(self):
+        command_invoker = CommandInvoker()
+        command_open = CommandOpen(self._recipe_selection)
+        command_save = CommandSave(self._recipe_form, self._recipe_selection)
+
+        command_invoker.register(command_open)
+        command_invoker.register(command_save)
+
+        self._menu_bar = MenuBar(command_invoker)
+        self._window.config(menu=self._menu_bar)
 
     def render(self):
         self._window.mainloop()
