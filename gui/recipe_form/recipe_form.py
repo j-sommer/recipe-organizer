@@ -1,4 +1,4 @@
-from tkinter import Label, Entry, END, Frame, Text, Button
+from tkinter import Label, Entry, END, Frame, Text, Button, W, E
 from typing import Any, Callable
 
 from events.event import Event, EventType
@@ -6,6 +6,7 @@ from events.event_observer import EventObserver
 from events.event_publisher import EventPublisher
 from gui.interfaces.list_item_holder import ListItemHolder
 from gui.interfaces.widget_container import WidgetContainer
+from gui.recipe_form.form_label.form_label import FormLabel
 from gui.recipe_form.ingredient_form.ingredient_form import IngredientForm
 from recipe.ingredient.ingredient import Ingredient
 from recipe.recipe import Recipe
@@ -44,22 +45,22 @@ class RecipeForm(Frame, WidgetContainer, EventObserver, ListItemHolder):
         self._ingredient_forms.remove(to_remove)
 
     def define_widgets(self) -> None:
-        self._label_title = Label(self, text="Titel")
+        self._label_title = FormLabel(self, text="Titel")
         self._entry_title = Entry(self)
-        self._label_ingredients = Label(self, text="Zutaten")
+        self._label_ingredients = FormLabel(self, text="Zutaten")
         self._frame_ingredients = Frame(self)
-        self._label_preparation = Label(self, text="Zubereitung")
+        self._label_preparation = FormLabel(self, text="Zubereitung")
         self._text_preparation = Text(self)
         self._button_add_ingredient = Button(self, text="hinzufügen", command=self.add_ingredient)
 
     def define_layout(self) -> None:
-        self._label_title.grid(row=0, column=0)
-        self._entry_title.grid(row=0, column=1)
-        self._label_ingredients.grid(row=1, column=0)
-        self._frame_ingredients.grid(row=2)
-        self._button_add_ingredient.grid(row=3, column=1)
-        self._label_preparation.grid(row=4, column=0)
-        self._text_preparation.grid(row=5)
+        self._label_title.grid(row=0)
+        self._entry_title.grid(row=1, sticky=W + E)
+        self._label_ingredients.grid(row=2, column=0)
+        self._frame_ingredients.grid(row=3)
+        self._button_add_ingredient.grid(row=4)
+        self._label_preparation.grid(row=5, column=0)
+        self._text_preparation.grid(row=6)
 
     def set_values(self, recipe: Recipe) -> None:
         if recipe:

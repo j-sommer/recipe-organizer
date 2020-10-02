@@ -4,6 +4,7 @@ from commands.command_invoker import CommandInvoker
 from commands.command_open import CommandOpen
 from commands.command_save import CommandSave
 from gui.event_display.event_display import EventDisplay
+from gui.font_manager.font_manager import FontManager
 from gui.interfaces.widget_container import WidgetContainer
 from gui.menu_bar.menu_bar import MenuBar
 from gui.recipe_form.recipe_form import RecipeForm
@@ -22,6 +23,9 @@ class AppWindow(WidgetContainer):
         self._window.title("Ingredient Extractor")
         self._window.state("zoomed")
         self._window.minsize(300, 200)
+
+        font_manager = FontManager(self._window)
+        font_manager.set_default_font()
 
         self._recipe_selection = RecipeSelection()
 
