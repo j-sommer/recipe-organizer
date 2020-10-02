@@ -11,6 +11,7 @@ module_path = "gui.app_window"
 def test_app_window_initialization():
     # Given
     with patch(f"{module_path}.Tk", autospec=True) as mock_tkinter, \
+            patch(f"{module_path}.FontManager", autospec=True), \
             patch(f"{module_path}.RecipeForm", autospec=True) as mock_recipe_form, \
             patch(f"{module_path}.RecipeSelection", autospec=True) as mock_recipe_selection:
         tk_instance = MagicMock(Tk)
