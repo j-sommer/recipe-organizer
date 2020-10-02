@@ -3,8 +3,8 @@ from typing import Any
 
 
 class EventType(Enum):
-    READ = 1
-    SAVE = 2
+    FILE_READ = 1
+    SAVED = 2
 
 
 class Event:

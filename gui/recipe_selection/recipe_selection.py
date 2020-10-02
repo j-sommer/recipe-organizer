@@ -1,64 +1,36 @@
-from tkinter import Label, filedialog, Button, Frame
+from tkinter import filedialog
 
 from events.event import Event, EventType
-from events.event_observer import EventObserver
 from events.event_publisher import EventPublisher
-from gui.interfaces.widget_container import WidgetContainer
 from recipe.recipe import Recipe
 
 
-class RecipeSelection(Frame, WidgetContainer, EventObserver):
+class RecipeSelection:
     FILE_TYPES = [
         ('json files', '*.json')
     ]
-
-    _label_recipe_selection: Label = None
-    _button_recipe_selection: Button = None
-
-    _selected_recipe_file: str = None
+    _selected_recipe_file: str
 
     def __init__(self):
         super().__init__()
 
-        self.define_widgets()
-        self.configure_layout()
-        self.define_layout()
-
-        EventPublisher.add(self)
-
-    def notify(self, event: Event) -> None:
-        if event.event_type == EventType.SAVE:
-            self.write_recipe_to_file(event.payload, self._selected_recipe_file)
-
-    def define_widgets(self):
-        self._label_recipe_selection = Label(self, text="Rezeptauswahl")
-        self._button_recipe_selection = Button(self, text="auswählen", command=self.open_selection_dialog)
-
-    def configure_layout(self):
-        self.rowconfigure(0, pad=30)
-        self.columnconfigure(0, pad=8)
-        self.rowconfigure(1, pad=20)
-        self.columnconfigure(1, pad=8)
-
-    def define_layout(self):
-        self._label_recipe_selection.grid(row=0, column=0)
-        self._button_recipe_selection.grid(row=1, column=1)
-
-    def open_selection_dialog(self):
+    def open_recipe(self):
         self._selected_recipe_file = filedialog.askopenfilename(initialdir="/", title="Rezept auswählen",
                                                                 filetypes=self.FILE_TYPES)
         self.read_recipe_from_file(self._selected_recipe_file)
 
+    # TODO introduce recipe json file class
     @staticmethod
     def read_recipe_from_file(file_path: str) -> None:
         with open(file_path, "r") as file:
             json_data = file.read()
             recipe = Recipe.from_json(json_data)
 
-            EventPublisher.broadcast(Event(EventType.READ, payload=recipe))
+            EventPublisher.broadcast(Event(EventType.FILE_READ, payload=recipe))
 
-    @staticmethod
-    def write_recipe_to_file(recipe: Recipe, file_path: str) -> None:
-        with open(file_path, "w") as file:
+    def write_recipe_to_file(self, recipe: Recipe) -> None:
+        with open(self._selected_recipe_file, "w") as file:
             json_data = recipe.to_json()
             file.write(json_data)
+
+            EventPublisher.broadcast(Event(EventType.SAVED, payload=None))

@@ -9,8 +9,8 @@ class EventDisplay(Frame, EventObserver):
     _label_event_message: Label = None
 
     _event_message = {
-        EventType.READ: "Rezept geöffnet",
-        EventType.SAVE: "Rezept gespeichert"
+        EventType.FILE_READ: "Rezept geöffnet",
+        EventType.SAVED: "Rezept gespeichert"
     }
 
     def __init__(self):

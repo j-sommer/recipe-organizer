@@ -1,5 +1,5 @@
 from tkinter import Label, Entry, END, Frame, Text, Button
-from typing import Any
+from typing import Any, Callable
 
 from events.event import Event, EventType
 from events.event_observer import EventObserver
@@ -23,14 +23,20 @@ class RecipeForm(Frame, WidgetContainer, EventObserver, ListItemHolder):
 
     _ingredient_forms: [IngredientForm] = []
 
+    _event_handler = {
+        EventType.FILE_READ: Callable
+    }
+
     def __init__(self):
         super().__init__()
 
         EventPublisher.add(self)
 
+        self._event_handler[EventType.FILE_READ] = self.set_values
+
     def notify(self, event: Event) -> None:
-        if event.event_type == EventType.READ:
-            self.set_values(event.payload)
+        if event.event_type in self._event_handler:
+            self._event_handler.get(event.event_type)(event.payload)
 
     def remove_item(self, to_remove: Any) -> None:
         requested_index = self._ingredient_forms.index(to_remove)
@@ -44,7 +50,6 @@ class RecipeForm(Frame, WidgetContainer, EventObserver, ListItemHolder):
         self._frame_ingredients = Frame(self)
         self._label_preparation = Label(self, text="Zubereitung")
         self._text_preparation = Text(self)
-        self._button_save = Button(self, text="speichern", command=self.save_recipe)
         self._button_add_ingredient = Button(self, text="hinzufügen", command=self.add_ingredient)
 
     def define_layout(self) -> None:
@@ -55,7 +60,6 @@ class RecipeForm(Frame, WidgetContainer, EventObserver, ListItemHolder):
         self._button_add_ingredient.grid(row=3, column=1)
         self._label_preparation.grid(row=4, column=0)
         self._text_preparation.grid(row=5)
-        self._button_save.grid(row=6)
 
     def set_values(self, recipe: Recipe) -> None:
         if recipe:
@@ -81,10 +85,9 @@ class RecipeForm(Frame, WidgetContainer, EventObserver, ListItemHolder):
 
         self._ingredient_forms.append(new_ingredient_form)
 
-    def save_recipe(self) -> None:
-        recipe = Recipe(
+    def get_recipe_from_form(self) -> Recipe:
+        return Recipe(
             self._entry_title.get(),
             [],
             [form.get_ingredient() for form in self._ingredient_forms],
             self._text_preparation.get("1.0", END))
-        EventPublisher.broadcast(Event(EventType.SAVE, payload=recipe))
