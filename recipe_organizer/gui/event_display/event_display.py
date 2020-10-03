@@ -1,8 +1,8 @@
 from tkinter import Frame, Label
 
-from events.event import EventType, Event
-from events.event_observer import EventObserver
-from events.event_publisher import EventPublisher
+from recipe_organizer.events.event import EventType, Event
+from recipe_organizer.events.event_observer import EventObserver
+from recipe_organizer.events.event_publisher import EventPublisher
 
 
 class EventDisplay(Frame, EventObserver):

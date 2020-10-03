@@ -1,6 +1,6 @@
 from time import time
 
-from commands.command import Command, CommandType
+from recipe_organizer.commands.command import CommandType, Command
 
 
 class CommandInvoker:

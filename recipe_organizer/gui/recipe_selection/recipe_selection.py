@@ -1,8 +1,8 @@
 from tkinter import filedialog
 
-from events.event import Event, EventType
-from events.event_publisher import EventPublisher
-from recipe.recipe import Recipe
+from recipe_organizer.events.event import Event, EventType
+from recipe_organizer.events.event_publisher import EventPublisher
+from recipe_organizer.recipe.recipe import Recipe
 
 
 class RecipeSelection:
@@ -15,7 +15,7 @@ class RecipeSelection:
         file_name = filedialog.askopenfilename(initialdir="/", title="Rezept auswählen",
                                                filetypes=self.FILE_TYPES)
 
-        if file_name is not None:
+        if file_name:
             self.__read_recipe_from_file(file_name)
             self._selected_recipe_file = file_name
 
@@ -25,7 +25,7 @@ class RecipeSelection:
         else:
             file_name = filedialog.asksaveasfilename(defaultextension=".json", filetypes=self.FILE_TYPES)
 
-            if file_name is not None:
+            if file_name:
                 self._selected_recipe_file = file_name
                 self.__write_to_selected_file_and_publish(recipe, self._selected_recipe_file)
 

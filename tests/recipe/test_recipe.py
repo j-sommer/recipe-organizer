@@ -1,5 +1,5 @@
-from recipe.ingredient.ingredient import Ingredient
-from recipe.recipe import Recipe
+from recipe_organizer.recipe.ingredient.ingredient import Ingredient
+from recipe_organizer.recipe.recipe import Recipe
 
 
 def test_recipe_serialization():
@@ -22,10 +22,10 @@ def test_recipe_serialization():
 
 def test_recipe_deserialization():
     # Given
-    json_string = """{"py/object": "recipe.recipe.Recipe", "title": "title", "labels": ["labelA", "labelB"], "ingredients": [{"py/object": "recipe.ingredient.ingredient.Ingredient", "name": "name", "quantity_type": "g", "quantity": 50}], "preparation": "preparation"}"""
+    json_string = """{"py/object": "recipe_organizer.recipe.recipe.Recipe", "title": "title", "labels": ["labelA", "labelB"], "ingredients": [{"py/object": "recipe_organizer.recipe.ingredient.ingredient.Ingredient", "name": "name", "quantity_type": "g", "quantity": 50}], "preparation": "preparation"}"""
 
     # When
-    actual = Recipe.from_json(json_string)
+    actual: Recipe = Recipe.from_json(json_string)
 
     # Then
     assert actual.title == "title"

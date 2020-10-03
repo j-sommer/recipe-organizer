@@ -3,11 +3,11 @@ from unittest.mock import patch, MagicMock
 
 from pytest import fixture
 
-from gui.recipe_form.recipe_form import RecipeForm
-from recipe.ingredient.ingredient import Ingredient
-from recipe.recipe import Recipe
+from recipe_organizer.gui.recipe_form.recipe_form import RecipeForm
+from recipe_organizer.recipe.ingredient.ingredient import Ingredient
+from recipe_organizer.recipe.recipe import Recipe
 
-module_path = "gui.recipe_form.recipe_form"
+module_path = "recipe_organizer.gui.recipe_form.recipe_form"
 
 
 @fixture(autouse=True)

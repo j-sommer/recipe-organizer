@@ -3,10 +3,10 @@ from unittest.mock import patch, mock_open
 
 from pytest import fixture
 
-from gui.recipe_selection.recipe_selection import RecipeSelection
-from recipe.recipe import Recipe
+from recipe_organizer.gui.recipe_selection.recipe_selection import RecipeSelection
+from recipe_organizer.recipe.recipe import Recipe
 
-module_path = "gui.recipe_selection.recipe_selection"
+module_path = "recipe_organizer.gui.recipe_selection.recipe_selection"
 
 
 @fixture(autouse=True)

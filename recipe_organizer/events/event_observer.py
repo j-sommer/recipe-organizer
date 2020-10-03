@@ -1,6 +1,6 @@
 from abc import abstractmethod, ABC
 
-from events.event import Event
+from recipe_organizer.events.event import Event
 
 
 class EventObserver(ABC):

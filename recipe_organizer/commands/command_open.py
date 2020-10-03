@@ -1,5 +1,5 @@
-from commands.command import Command, CommandType
-from gui.recipe_selection.recipe_selection import RecipeSelection
+from recipe_organizer.commands.command import Command, CommandType
+from recipe_organizer.gui.recipe_selection.recipe_selection import RecipeSelection
 
 
 class CommandOpen(Command):

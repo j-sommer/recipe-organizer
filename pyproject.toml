@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "ingredient-extractor"
+name = "recipe-organizer"
 version = "1.0.0"
-description = ""
+description = "python recipe organization desktop application"
 authors = ["Jan Sommer <jan-sommer@outlook.com>"]
 license = "MIT"
 

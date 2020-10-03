@@ -1,4 +1,4 @@
-from gui.app_window import AppWindow
+from recipe_organizer.gui.app_window import AppWindow
 
 
 def main():

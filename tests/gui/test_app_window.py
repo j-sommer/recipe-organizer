@@ -1,11 +1,11 @@
 from tkinter import Tk
 from unittest.mock import patch, MagicMock
 
-from gui.app_window import AppWindow
-from gui.recipe_form.recipe_form import RecipeForm
-from gui.recipe_selection.recipe_selection import RecipeSelection
+from recipe_organizer.gui.app_window import AppWindow
+from recipe_organizer.gui.recipe_form.recipe_form import RecipeForm
+from recipe_organizer.gui.recipe_selection.recipe_selection import RecipeSelection
 
-module_path = "gui.app_window"
+module_path = "recipe_organizer.gui.app_window"
 
 
 def test_app_window_initialization():
