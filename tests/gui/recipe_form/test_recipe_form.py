@@ -55,7 +55,7 @@ def test_add_ingredient(mocks):
     recipe_form._ingredient_forms = []
 
     # When
-    recipe_form.__add_ingredient()
+    recipe_form._RecipeForm__add_ingredient()
 
     # Then
     assert len(recipe_form._ingredient_forms) == 1
