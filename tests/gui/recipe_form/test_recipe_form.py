@@ -41,7 +41,7 @@ def test_recipe_handling(mocks):
     recipe_form = RecipeForm()
 
     # When
-    recipe_form.set_values(recipe)
+    recipe_form.set_form_values(recipe)
 
     # Then
     assert mocks["mock_entry"].call_count == expected_preparation_entries_count
@@ -55,7 +55,7 @@ def test_add_ingredient(mocks):
     recipe_form._ingredient_forms = []
 
     # When
-    recipe_form.add_ingredient()
+    recipe_form.__add_ingredient()
 
     # Then
     assert len(recipe_form._ingredient_forms) == 1

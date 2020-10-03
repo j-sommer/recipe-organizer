@@ -16,4 +16,4 @@ class CommandSave(Command):
 
     def execute(self) -> None:
         recipe: Recipe = self._recipe_form.get_recipe_from_form()
-        self._recipe_selection.write_recipe_to_file(recipe)
+        self._recipe_selection.save_recipe_to_file(recipe)

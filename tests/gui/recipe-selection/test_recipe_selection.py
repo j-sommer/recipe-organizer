@@ -28,7 +28,7 @@ def test_save_event_handling(mocks):
     with patch("builtins.open", mock_open(read_data="content")) as mock_file_open:
         file_instance = mock_file_open()
         # When
-        recipe_selection.write_recipe_to_file(recipe)
+        recipe_selection.save_recipe_to_file(recipe)
 
         # Then
         file_instance.write.assert_called_once()
@@ -47,7 +47,7 @@ def test_recipe_selection_file_deserialization(mocks):
         recipe_selection = RecipeSelection()
 
         # When
-        recipe_selection.open_recipe()
+        recipe_selection.open_recipe_file()
 
         # Then
         mock_file_open.assert_called_once_with(mock_path, mock.ANY)

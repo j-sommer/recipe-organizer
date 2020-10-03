@@ -12,4 +12,4 @@ class CommandOpen(Command):
         self._recipe_selection = recipe_selection
 
     def execute(self) -> None:
-        self._recipe_selection.open_recipe()
+        self._recipe_selection.open_recipe_file()

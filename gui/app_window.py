@@ -1,6 +1,7 @@
 from tkinter import Tk
 
 from commands.command_invoker import CommandInvoker
+from commands.command_new import CommandNew
 from commands.command_open import CommandOpen
 from commands.command_save import CommandSave
 from gui.event_display.event_display import EventDisplay
@@ -45,9 +46,11 @@ class AppWindow(WidgetContainer):
         command_invoker = CommandInvoker()
         command_open = CommandOpen(self._recipe_selection)
         command_save = CommandSave(self._recipe_form, self._recipe_selection)
+        command_new = CommandNew(self._recipe_form)
 
         command_invoker.register(command_open)
         command_invoker.register(command_save)
+        command_invoker.register(command_new)
 
         self._menu_bar = MenuBar(command_invoker)
         self._window.config(menu=self._menu_bar)
