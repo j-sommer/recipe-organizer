@@ -1,10 +1,10 @@
 from unittest.mock import patch
 
-from gui.interfaces.list_item_holder import ListItemHolder
-from gui.recipe_form.ingredient_form.ingredient_form import IngredientForm
-from recipe.ingredient.ingredient import Ingredient
+from recipe_organizer.gui.interfaces.list_item_holder import ListItemHolder
+from recipe_organizer.gui.recipe_form.ingredient_form.ingredient_form import IngredientForm
+from recipe_organizer.recipe.ingredient.ingredient import Ingredient
 
-module_path = "gui.recipe_form.ingredient_form.ingredient_form"
+module_path = "recipe_organizer.gui.recipe_form.ingredient_form.ingredient_form"
 
 
 def test_ingredient_form_initialization():

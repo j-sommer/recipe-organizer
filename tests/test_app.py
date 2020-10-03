@@ -1,10 +1,10 @@
 from unittest.mock import patch, MagicMock
 
-from app import main
-from gui.app_window import AppWindow
+from recipe_organizer.app import main
+from recipe_organizer.gui.app_window import AppWindow
 
 
-@patch("app.AppWindow", autospec=True)
+@patch("recipe_organizer.app.AppWindow", autospec=True)
 def test_app_initialization(mock_app_window):
     # Given
     app_window_instance = MagicMock(AppWindow)

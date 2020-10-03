@@ -1,7 +1,6 @@
-from commands.command import Command, CommandType
-from gui.recipe_form.recipe_form import RecipeForm
-from gui.recipe_selection.recipe_selection import RecipeSelection
-from recipe.recipe import Recipe
+from recipe_organizer.commands.command import Command, CommandType
+from recipe_organizer.gui.recipe_form.recipe_form import RecipeForm
+from recipe_organizer.gui.recipe_selection.recipe_selection import RecipeSelection
 
 
 class CommandSave(Command):

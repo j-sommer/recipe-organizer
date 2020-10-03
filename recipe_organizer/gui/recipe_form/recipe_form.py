@@ -1,15 +1,15 @@
 from tkinter import Label, Entry, END, Frame, Text, Button, W, E
 from typing import Any
 
-from events.event import Event, EventType
-from events.event_observer import EventObserver
-from events.event_publisher import EventPublisher
-from gui.interfaces.list_item_holder import ListItemHolder
-from gui.interfaces.widget_container import WidgetContainer
-from gui.recipe_form.form_label.form_label import FormLabel
-from gui.recipe_form.ingredient_form.ingredient_form import IngredientForm
-from recipe.ingredient.ingredient import Ingredient
-from recipe.recipe import Recipe
+from recipe_organizer.events.event import Event, EventType
+from recipe_organizer.events.event_observer import EventObserver
+from recipe_organizer.events.event_publisher import EventPublisher
+from recipe_organizer.gui.interfaces.list_item_holder import ListItemHolder
+from recipe_organizer.gui.interfaces.widget_container import WidgetContainer
+from recipe_organizer.gui.recipe_form.form_label.form_label import FormLabel
+from recipe_organizer.gui.recipe_form.ingredient_form.ingredient_form import IngredientForm
+from recipe_organizer.recipe.ingredient.ingredient import Ingredient
+from recipe_organizer.recipe.recipe import Recipe
 
 
 class RecipeForm(Frame, WidgetContainer, EventObserver, ListItemHolder):

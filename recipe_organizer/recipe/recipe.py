@@ -3,7 +3,7 @@ from typing import List
 
 from jsonpickle import encode, decode
 
-from recipe.ingredient.ingredient import Ingredient
+from recipe_organizer.recipe.ingredient.ingredient import Ingredient
 
 
 @dataclass
@@ -13,7 +13,7 @@ class Recipe:
     ingredients: List[Ingredient]
     preparation: str
 
-    def to_json(self):
+    def to_json(self) -> str:
         return encode(self)
 
     @staticmethod

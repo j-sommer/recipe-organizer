@@ -1,15 +1,15 @@
 from tkinter import Tk
 
-from commands.command_invoker import CommandInvoker
-from commands.command_new import CommandNew
-from commands.command_open import CommandOpen
-from commands.command_save import CommandSave
-from gui.event_display.event_display import EventDisplay
-from gui.font_manager.font_manager import FontManager
-from gui.interfaces.widget_container import WidgetContainer
-from gui.menu_bar.menu_bar import MenuBar
-from gui.recipe_form.recipe_form import RecipeForm
-from gui.recipe_selection.recipe_selection import RecipeSelection
+from recipe_organizer.commands.command_invoker import CommandInvoker
+from recipe_organizer.commands.command_new import CommandNew
+from recipe_organizer.commands.command_open import CommandOpen
+from recipe_organizer.commands.command_save import CommandSave
+from recipe_organizer.gui.event_display.event_display import EventDisplay
+from recipe_organizer.gui.font_manager.font_manager import FontManager
+from recipe_organizer.gui.interfaces.widget_container import WidgetContainer
+from recipe_organizer.gui.menu_bar.menu_bar import MenuBar
+from recipe_organizer.gui.recipe_form.recipe_form import RecipeForm
+from recipe_organizer.gui.recipe_selection.recipe_selection import RecipeSelection
 
 
 class AppWindow(WidgetContainer):

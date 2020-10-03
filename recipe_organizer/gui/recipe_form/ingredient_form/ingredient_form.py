@@ -1,8 +1,8 @@
 from tkinter import Frame, Entry, Button
 
-from gui.interfaces.list_item_holder import ListItemHolder
-from gui.interfaces.widget_container import WidgetContainer
-from recipe.ingredient.ingredient import Ingredient
+from recipe_organizer.gui.interfaces.list_item_holder import ListItemHolder
+from recipe_organizer.gui.interfaces.widget_container import WidgetContainer
+from recipe_organizer.recipe.ingredient.ingredient import Ingredient
 
 
 class IngredientForm(Frame, WidgetContainer):

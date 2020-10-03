@@ -1,6 +1,6 @@
 from typing import List
 
-from events.event_observer import EventObserver
+from recipe_organizer.events.event_observer import EventObserver
 
 _observers: List[EventObserver] = []
 

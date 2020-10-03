@@ -1,5 +1,5 @@
-from commands.command import Command, CommandType
-from gui.recipe_form.recipe_form import RecipeForm
+from recipe_organizer.commands.command import Command, CommandType
+from recipe_organizer.gui.recipe_form.recipe_form import RecipeForm
 
 
 class CommandNew(Command):

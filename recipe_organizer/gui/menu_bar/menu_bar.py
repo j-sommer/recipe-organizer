@@ -1,7 +1,7 @@
 from tkinter import Menu
 
-from commands.command import CommandType
-from commands.command_invoker import CommandInvoker
+from recipe_organizer.commands.command import CommandType
+from recipe_organizer.commands.command_invoker import CommandInvoker
 
 
 class MenuBar(Menu):
