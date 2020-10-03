@@ -2,7 +2,7 @@ name: Build Windows Executable Artifact
 
 on:
   push:
-    branches: [ master ]
+    branches: [ ]
 
 jobs:
   build:
@@ -28,7 +28,7 @@ jobs:
       - name: Install Pyinstaller
         run: poetry add pyinstaller
       - name: Build Executable
-        run: poetry run pyinstaller recipe_organizer.py --name recipe-organizer
+        run: poetry run pyinstaller recipe_organizer/app.py --name recipe-organizer
       - name: Build Artifact
         uses: actions/upload-artifact@v2
         with:
