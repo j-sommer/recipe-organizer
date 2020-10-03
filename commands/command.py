@@ -3,8 +3,9 @@ from enum import Enum
 
 
 class CommandType(Enum):
-    OPEN = 1,
-    SAVE = 2
+    NEW = 1,
+    OPEN = 2,
+    SAVE = 3
 
 
 class Command(ABC):
