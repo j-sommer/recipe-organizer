@@ -24,8 +24,8 @@ class RecipeForm(Frame, WidgetContainer, EventObserver, ListItemHolder):
 
     _ingredient_forms: [IngredientForm] = []
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, parent):
+        Frame.__init__(self, parent)
 
         self.define_widgets()
         self.define_layout()
