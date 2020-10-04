@@ -13,8 +13,8 @@ class EventDisplay(Frame, EventObserver):
         EventType.SAVED: "Rezept gespeichert"
     }
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, parent):
+        Frame.__init__(self, parent)
 
         EventPublisher.add(self)
 
