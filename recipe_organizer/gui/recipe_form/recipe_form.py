@@ -50,6 +50,8 @@ class RecipeForm(Frame, WidgetContainer, EventObserver, ListItemHolder):
         self._text_preparation = Text(self)
         self._button_add_ingredient = Button(self, text="hinzufügen", command=self.__add_ingredient)
 
+        self.__add_ingredient()
+
     def define_layout(self) -> None:
         self._label_title.grid(row=0)
         self._entry_title.grid(row=1, sticky=W + E)
