@@ -50,5 +50,5 @@ def test_recipe_selection_file_deserialization(mocks):
         recipe_selection.open_recipe_file()
 
         # Then
-        mock_file_open.assert_called_once_with(mock_path, mock.ANY)
+        mock_file_open.assert_called_once_with(mock_path, 'r', encoding='utf-8')
         mocks["mock_event_publisher"].broadcast.assert_called_once()
