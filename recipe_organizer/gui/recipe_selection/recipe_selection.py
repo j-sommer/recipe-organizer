@@ -31,7 +31,7 @@ class RecipeSelection:
 
     @staticmethod
     def __read_recipe_from_file(file_path: str) -> None:
-        with open(file_path, "r") as file:
+        with open(file_path, "r", encoding="utf-8") as file:
             json_data = file.read()
             recipe = Recipe.from_json(json_data)
 
@@ -39,7 +39,7 @@ class RecipeSelection:
 
     @staticmethod
     def __write_to_selected_file_and_publish(recipe: Recipe, file_path):
-        with open(file_path, "w") as file:
+        with open(file_path, "w", encoding="utf-8") as file:
             json_data = recipe.to_json()
             file.write(json_data)
 
