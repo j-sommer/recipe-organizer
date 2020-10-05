@@ -13,9 +13,10 @@ def test_ingredient_form_initialization():
     parent = None
     list_holder: ListItemHolder = None
 
-    expected_entries_count = 3
+    expected_entries_count = 2
 
     with patch(f"{module_path}.Frame"), \
+        patch(f"{module_path}.QuantityType") as mock_quantity_type, \
          patch(f"{module_path}.Entry") as mock_entry:
         # When
         ingredient_form = IngredientForm(parent, ingredient, list_holder)
@@ -23,3 +24,4 @@ def test_ingredient_form_initialization():
         # Then
         assert ingredient_form
         assert mock_entry.call_count == expected_entries_count
+        assert mock_quantity_type.call_count == 1
