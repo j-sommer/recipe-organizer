@@ -11,6 +11,7 @@ from recipe_organizer.gui.menu_bar.menu_bar import MenuBar
 from recipe_organizer.gui.recipe_form.recipe_form import RecipeForm
 from recipe_organizer.gui.recipe_selection.recipe_selection import RecipeSelection
 from recipe_organizer.gui.scrollable_frame.scrollable_frame import ScrollableFrame
+from recipe_organizer.gui.shortcut_handler.shortcut_handler import ShortcutHandler
 
 
 class AppWindow(WidgetContainer):
@@ -54,6 +55,7 @@ class AppWindow(WidgetContainer):
 
     def define_command_handling(self):
         command_invoker = CommandInvoker()
+        shortcut_handler = ShortcutHandler(self._window, command_invoker)
         command_open = CommandOpen(self._recipe_selection)
         command_save = CommandSave(self._recipe_form, self._recipe_selection)
         command_new = CommandNew(self._recipe_form)
