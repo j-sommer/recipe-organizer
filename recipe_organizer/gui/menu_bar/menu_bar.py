@@ -16,9 +16,9 @@ class MenuBar(Menu):
 
     def define_menu_entries(self):
         self._file_menu = Menu(self, tearoff=0)
-        self._file_menu.add_command(label="Neu", command=self.__new_recipe)
-        self._file_menu.add_command(label="Öffnen", command=self.__open_recipe)
-        self._file_menu.add_command(label="Speichern", command=self.__save_recipe)
+        self._file_menu.add_command(label="Neu", command=self.__new_recipe, accelerator="Strg+N")
+        self._file_menu.add_command(label="Öffnen", command=self.__open_recipe, accelerator="Strg+O")
+        self._file_menu.add_command(label="Speichern", command=self.__save_recipe, accelerator="Strg+S")
         self.add_cascade(label="Datei", menu=self._file_menu)
 
     def __open_recipe(self):
