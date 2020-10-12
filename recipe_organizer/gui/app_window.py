@@ -10,6 +10,7 @@ from recipe_organizer.gui.interfaces.widget_container import WidgetContainer
 from recipe_organizer.gui.menu_bar.menu_bar import MenuBar
 from recipe_organizer.gui.recipe_form.recipe_form import RecipeForm
 from recipe_organizer.gui.recipe_selection.recipe_selection import RecipeSelection
+from recipe_organizer.gui.recipe_source_selection.recipe_source_selection import RecipeSourceSelection
 from recipe_organizer.gui.scrollable_frame.scrollable_frame import ScrollableFrame
 from recipe_organizer.gui.shortcut_handler.shortcut_handler import ShortcutHandler
 
@@ -19,6 +20,7 @@ class AppWindow(WidgetContainer):
     _scrollable_frame: ScrollableFrame
     _recipe_form: RecipeForm
     _event_display: EventDisplay
+    _recipe_source_selection: RecipeSourceSelection
 
     _recipe_selection: RecipeSelection
 
@@ -43,6 +45,7 @@ class AppWindow(WidgetContainer):
     def define_widgets(self) -> None:
         self._recipe_form = RecipeForm(self._scrollable_frame.content)
         self._event_display = EventDisplay(self._scrollable_frame.content)
+        self._recipe_source_selection = RecipeSourceSelection(self._window)
 
     def configure_layout(self):
         self._window.columnconfigure(0, weight=1)
