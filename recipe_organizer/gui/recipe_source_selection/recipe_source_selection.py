@@ -1,5 +1,8 @@
-from tkinter import Toplevel, Button, filedialog, E, W, S, LEFT, Label, CENTER
+from pathlib import Path
+from tkinter import Toplevel, Button, filedialog, E, W, S, Label, CENTER
 
+from recipe_organizer.events.event import Event, EventType
+from recipe_organizer.events.event_publisher import EventPublisher
 from recipe_organizer.gui.interfaces.widget_container import WidgetContainer
 
 
@@ -8,7 +11,7 @@ class RecipeSourceSelection(Toplevel, WidgetContainer):
     _button_dismiss: Button
     _button_select_directory: Button
 
-    _source_directory: str
+    _source_directory: Path
 
     def __init__(self, parent):
         Toplevel.__init__(self, parent)
@@ -49,5 +52,7 @@ class RecipeSourceSelection(Toplevel, WidgetContainer):
         directory = filedialog.askdirectory(title="Hauptverzeichnis auswählen")
 
         if directory:
-            self._source_directory = directory
+            self._source_directory = Path(directory)
+
+            EventPublisher.broadcast(Event(EventType.SOURCE_SET, payload=self._source_directory))
             self.destroy()
