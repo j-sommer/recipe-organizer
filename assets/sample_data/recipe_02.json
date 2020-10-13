@@ -1,0 +1,42 @@
+{
+  "title": "Schnelle Wurstpfanne mit Senfsoße",
+  "labels": [],
+  "ingredients": [
+    {
+      "name": "Champignons",
+      "quantity_type": "g",
+      "quantity": "200"
+    },
+    {
+      "name": "Gewürzgurken",
+      "quantity_type": "g",
+      "quantity": "150"
+    },
+    {
+      "name": "Fleischwurst",
+      "quantity_type": "g",
+      "quantity": "350"
+    },
+    {
+      "name": "Silberzwiebeln",
+      "quantity_type": "Glas",
+      "quantity": "1"
+    },
+    {
+      "name": "Schlagsahne",
+      "quantity_type": "g",
+      "quantity": "200"
+    },
+    {
+      "name": "Petersilie",
+      "quantity_type": "Stiele",
+      "quantity": "3"
+    },
+    {
+      "name": "Senf",
+      "quantity_type": "EL",
+      "quantity": "1"
+    }
+  ],
+  "preparation": "Pilze putzen, eventuell waschen und vierteln. Gurken in Streifen, Wurst in Scheiben schneiden. Silberzwiebeln abtropfen lassen."
+}
