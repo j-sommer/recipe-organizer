@@ -1,9 +1,8 @@
 # :page_with_curl: Recipe Organizer
 Python desktop application for recipe creation, editing and management.
 
-## Intention
-
-## Usage
+## Built With
+This python project uses [Tkinter](https://docs.python.org/3/library/tk.html) as its UI framework and [pytest](https://docs.pytest.org/en/stable/contents.html#) for testing.
 
 ## License
 
