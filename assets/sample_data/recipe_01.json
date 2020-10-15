@@ -1,6 +1,8 @@
 {
   "title": "Schwarzbrot",
-  "labels": [],
+  "labels": [
+    "Brot", "Teig"
+  ],
   "ingredients": [
     {
       "name": "Sauerteig",
