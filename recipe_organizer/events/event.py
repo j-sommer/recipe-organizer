@@ -5,6 +5,7 @@ from typing import Any
 class EventType(Enum):
     FILE_READ = 1
     SAVED = 2
+    SOURCE_SET = 3
 
 
 class Event:

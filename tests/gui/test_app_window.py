@@ -14,7 +14,8 @@ def test_app_window_initialization():
             patch(f"{module_path}.FontManager", autospec=True), \
             patch(f"{module_path}.RecipeForm", autospec=True) as mock_recipe_form, \
             patch(f"{module_path}.ScrollableFrame") as mock_scrollable_frame, \
-            patch(f"{module_path}.RecipeSelection", autospec=True) as mock_recipe_selection:
+            patch(f"{module_path}.RecipeSelection", autospec=True) as mock_recipe_selection, \
+            patch(f"{module_path}.RecipeSourceSelection", autospec=True) as mock_recipe_source_selection:
         tk_instance = MagicMock(Tk)
         mock_tkinter.return_value = tk_instance
 
